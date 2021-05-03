@@ -17,17 +17,3 @@ async def index():
         "https://github.com/Master-Hash/postcard",
         status_code=301,
     )
-
-
-@router.get(
-    "/api",
-    summary="重定向至 /app，当前 url 将弃用",
-    deprecated=True,
-    # responses=
-    status_code=301,
-)
-async def api():
-    return RedirectResponse(
-        "/app",
-        status_code=301,
-    )
