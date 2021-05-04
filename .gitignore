@@ -131,3 +131,4 @@ dmypy.json
 # 以下为手动添加
 .vscode/
 play.*
+GeoLite2-City.mmdb

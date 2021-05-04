@@ -21,6 +21,8 @@ class q:
     # matrix: tuple[float]
     line: Optional[str] = None
     line2: Optional[str] = None
+    lang: Optional[str] = None
+    tz: Optional[str] = None
     # 我也没有更优雅的方案（
     for i in icons:
         exec(f"{i}: Optional[str] = None")
