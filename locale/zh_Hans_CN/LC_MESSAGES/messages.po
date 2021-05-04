@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-04 11:02+0800\n"
+"POT-Creation-Date: 2021-05-04 23:15+0800\n"
 "PO-Revision-Date: 2021-05-03 22:04+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -18,18 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: postcard/functions.py:40
-msgid "localhost"
-msgstr "本地"
-
-#: postcard/functions.py:60
+#: postcard/geoparse.py:59 postcard/geoparse.py:78
 msgid "nowhere"
 msgstr "神秘位置"
 
+#: postcard/geoparse.py:74
+msgid "localhost"
+msgstr "本地"
+
+#: postcard/geoparse.py:76
+msgid "some reservation"
+msgstr "保护区"
+
 #: templates/text.svg:2
 #, python-format
-msgid "Welcome to my friend from %(geo)s"
-msgstr "欢迎您来自%(geo)s的朋友"
+msgid "Welcome to my friend from %(pos)s"
+msgstr "欢迎您来自%(pos)s的朋友"
 
 #: templates/text.svg:3
 #, python-format

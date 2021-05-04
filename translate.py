@@ -5,6 +5,7 @@
 # locale 是 builtin-module（
 
 import subprocess
+import os
 import typer
 
 app = typer.Typer()
@@ -28,6 +29,8 @@ def extract() -> None:
 
 @app.command()
 def init(locale: str) -> None:
+    if os.path.isdir(f"./locale/{locale}"):
+        raise typer.Exit(code=1)
     subprocess.run(
         args=[
             "pybabel",
