@@ -30,7 +30,7 @@ async def postcard(
     user_agent: Optional[str] = Header(""),
 ):
     locale = commons.lang or \
-        parse_accept_header(accept_language, LanguageAccept) or \
+        parse_accept_header(accept_language, LanguageAccept).best or \
         "en"
     geo = getCity(request.client.host, locale=locale)
 

@@ -1,4 +1,4 @@
-# Chinese (Simplified, China) translations for PROJECT.
+# Chinese (Traditional, Taiwan) translations for PROJECT.
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
@@ -10,8 +10,8 @@ msgstr ""
 "POT-Creation-Date: 2021-05-04 09:35+0800\n"
 "PO-Revision-Date: 2021-05-03 22:04+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: zh_Hans_CN\n"
-"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Language: zh_Hant_TW\n"
+"Language-Team: zh_Hant_TW <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -29,7 +29,7 @@ msgstr "神秘位置"
 #: templates/text.svg:2
 #, python-format
 msgid "Welcome to my friend from %(geo)s"
-msgstr "欢迎您来自%(geo)s的朋友"
+msgstr "歡迎您來自%(geo)s的朋友"
 
 #: templates/text.svg:3
 #, python-format
@@ -44,10 +44,10 @@ msgstr "您的 IP 是 %(ip)s"
 #: templates/text.svg:5
 #, python-format
 msgid "You're using %(os)s operating system"
-msgstr "您使用的是 %(os)s 操作系统"
+msgstr "您使用的是 %(os)s 操作系統"
 
 #: templates/text.svg:6
 #, python-format
 msgid "You're using %(bro)s browser"
-msgstr "您使用的是 %(bro)s 浏览器"
+msgstr "您使用的是 %(bro)s 瀏覽器"
 
