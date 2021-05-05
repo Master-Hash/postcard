@@ -1,0 +1,24 @@
+{% macro url(key, value) %}
+{% if key == "github" %}
+    <a href="https://github.com/{{ value }}">{{ value }}</a>
+{% elif key == "zhihu" %}
+    <a href="https://zhihu.com/people/{{ value }}">{{ value }}</a>
+{% elif key == "email" %}
+    <a href="mailto:{{ value }}">{{ value }}</a>
+{% elif key == "site" %}
+    <a href="{{ value }}">{{ value }}</a>
+{% else %}
+    {{ value }}
+{% endif %}
+{% endmacro %}
+
+<g id="contact" transform="matrix{{ commons.matrix_contact }}">
+{% for key, value in items.items() %}
+    <g class="item" transform="translate(0, {{ loop.index0*30 }})">
+        <g class="icon" transform="scale(1.2)">{% include '%s.svg'%key %}</g>
+        <text class="text" transform="translate(25, 14)">
+            {{ url(key, value) }}
+        </text>
+    </g>
+{% endfor %}
+</g>
