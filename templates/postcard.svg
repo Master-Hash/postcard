@@ -6,7 +6,7 @@
 
 {% block line %}
     {% if width == 460 %}
-        <g id="line" transform="matrix{{ commons.matrix_line }}"><line id="line" x1="{{ compact_width }}" y1="20" x2="{{ compact_width }}" y2="145"/></g>
+        <g id="line" transform="matrix{{ commons.matrix_line }}"><line x1="{{ compact_width }}" y1="20" x2="{{ compact_width }}" y2="145" style="animation-delay: {{ 100*(6+(items|count)+(commons.getQuote()|count)) }}ms"/></g>
     {% endif %}
 {% endblock line %}
 

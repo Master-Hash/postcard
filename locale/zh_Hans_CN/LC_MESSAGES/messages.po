@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-04 23:15+0800\n"
+"POT-Creation-Date: 2021-05-05 17:22+0800\n"
 "PO-Revision-Date: 2021-05-03 22:04+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: postcard/geoparse.py:59 postcard/geoparse.py:78
+#: postcard/geoparse.py:58 postcard/geoparse.py:78
 msgid "nowhere"
 msgstr "神秘位置"
 
@@ -30,28 +30,31 @@ msgstr "本地"
 msgid "some reservation"
 msgstr "保护区"
 
-#: templates/text.svg:2
+#: templates/text.svg:3
 #, python-format
 msgid "Welcome to my friend from %(pos)s"
 msgstr "欢迎您来自%(pos)s的朋友"
 
-#: templates/text.svg:3
+#: templates/text.svg:4
 #, python-format
 msgid "It's %(date)s today"
 msgstr "今天是%(date)s"
 
-#: templates/text.svg:4
-#, python-format
-msgid "Your IP address is %(ip)s"
-msgstr "您的 IP 是 %(ip)s"
-
 #: templates/text.svg:5
+#, python-format
+msgid "Your IP address is <tspan class=\"code\">%(ip)s</tspan>"
+msgstr "您的 IP 是 <tspan class=\"code\">%(ip)s</tspan>"
+
+#: templates/text.svg:6
 #, python-format
 msgid "You're using %(os)s operating system"
 msgstr "您使用的是 %(os)s 操作系统"
 
-#: templates/text.svg:6
+#: templates/text.svg:7
 #, python-format
 msgid "You're using %(bro)s browser"
 msgstr "您使用的是 %(bro)s 浏览器"
+
+#~ msgid "Your IP address is %(ip)s"
+#~ msgstr "您的 IP 是 %(ip)s"
 

@@ -1,6 +1,7 @@
 from ipaddress import ip_address
 from typing import Optional
 from datetime import datetime
+from babel.core import UnknownLocaleError
 
 from fastapi import APIRouter, Depends, Header
 from fastapi.requests import Request
@@ -55,7 +56,11 @@ async def postcard(
     # 优先级：Query > Header > Default
     lang = commons.lang or langs.best or "en"
     ip = ip_address(request.client.host)
-    translation = Translations.load('locale', Locale.parse(lang, sep="-"))
+    try:
+        _l = Locale.parse(lang, sep="-")
+    except UnknownLocaleError:
+        _l = Locale.parse("en")
+    translation = Translations.load('locale', _l)
 
     # 1.
     # 2. 特判 ip -> 返回 _()
@@ -73,17 +78,20 @@ async def postcard(
 
     # 时区优先级：
     # Query > Model > UTC
-    tz = pytz.timezone(
-        commons.tz
-        or model and model.location.time_zone
-        or "utc"
-    )
+    try:
+        tz = pytz.timezone(
+            commons.tz
+            or model and model.location.time_zone
+            or "utc"
+        )
+    except pytz.UnknownTimeZoneError:
+        tz = pytz.UTC
 
     ua = parse(user_agent)
     date = format_date(
         datetime.now(tz=tz),
         format="full",
-        locale=Locale.parse(lang, sep="-"),
+        locale=_l,
     )
 
     # 其实不知道这么搞对不对……
