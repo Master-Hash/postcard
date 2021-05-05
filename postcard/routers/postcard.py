@@ -90,6 +90,8 @@ async def postcard(
     # 文档说了环境只能一开始初始化 env
     templates.env.install_gettext_translations(translation)
 
+    items = commons.getSocial(request.query_params)
+
     return templates.TemplateResponse(
         "postcard.svg",
         {
@@ -98,9 +100,11 @@ async def postcard(
             "pos": pos,
             "ua": ua,
             "date": date,
+            "items": items,
             # tz 就不传进去了？
             # "gettext": translation.gettext,
         },
+        media_type="image/svg+xml"
     )
 
 

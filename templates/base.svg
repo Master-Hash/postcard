@@ -1,6 +1,6 @@
 {% set compact_width = 285 %}
-{% set full_width = 500 %}
-{% if commons.img or commons.line %}
+{% set full_width = 460 %}
+{% if commons.img or commons.quote or items %}
     {% set width = full_width %}
 {% else %}
     {% set width = compact_width %}
@@ -8,13 +8,11 @@
 
 <svg xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {{ width }} 165">
-    <defs>
-        <style>{% include "style.css" %}</style>
-    </defs>
+    <style>{% include "style.css" %}</style>
     <title>Postcard - Hash</title>
     {% block text    %}{% endblock text    %}
     {% block line    %}{% endblock line    %}
     {# block img     %}{% endblock img     #}
-    {# block contact %}{% endblock contact #}
-    {# block quote   %}{% endblock quote   #}
+    {% block contact %}{% endblock contact %}
+    {% block quote   %}{% endblock quote   %}
 </svg>

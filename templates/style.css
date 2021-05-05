@@ -35,13 +35,13 @@ svg {
     fill: var(--content-color);
 }
 
-#contact .item .icon {
-    width: 16px;
-    height: 16px;
+#contact g.item svg {
+    /* 在这里写 transform, width, height 实际上无效 */
+    display: contents;
 }
 
-#contact .item .text {
-    font-size: 10px;
+#contact g.item .text {
+    font-size: 12px;
     fill: var(--content-color);
     font-weight: lighter;
 }

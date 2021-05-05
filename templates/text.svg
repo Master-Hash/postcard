@@ -1,4 +1,4 @@
-<g id="detail" transform="translate(25 35)">
+<g id="detail" transform="matrix{{ commons.matrix_detail }}">
 {% for t in (
     _("Welcome to my friend from %(pos)s", pos=pos),
     _("It's %(date)s today", date=date),

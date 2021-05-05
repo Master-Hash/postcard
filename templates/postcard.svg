@@ -1,37 +1,23 @@
 {% extends "base.svg" %}
-{% from "macros.svg" import render_item, render_img, render_quote %}
 
 {% block text %}
     {% include 'text.svg' %}
 {% endblock text %}
 
 {% block line %}
-    {% if width == 500 %}
-        <g><line id="line" x1="{{ compact_width }}" y1="20" x2="{{ compact_width }}" y2="145"/></g>
+    {% if width == 460 %}
+        <g id="line" transform="matrix{{ commons.matrix_line }}"><line id="line" x1="{{ compact_width }}" y1="20" x2="{{ compact_width }}" y2="145"/></g>
     {% endif %}
 {% endblock line %}
 
-{% block img %}
-    {% if img %}
-        {{ render_img(data, c.offset_x, c.offset_y, c.scale) }}
-    {% endif %}
-{% endblock img %}
-
 {% block contact %}
     {% if items %}
-    {# 真就逐字翻译呗 #}
-    {% set margin=40 %}
-    {% set sp=(170-margin)/(items|length) %}
-    <g id="contact" transform="translate(0 -25)">
-        {% for item in items %}
-            {{ render_item(item.text, item.alt, item.b64_data, margin + sp * loop.index0 + sp / 2 - 16) }}
-        {% endfor %}
-    </g>
+        {% include 'contact.svg' %}
     {% endif %}
 {% endblock contact %}
 
 {% block quote %}
-    {% if c.line or c.line2 %}
-        {{ render_quote(line=c.line, line2=c.line2) }}
+    {% if commons.quote %}
+        {% include 'quote.svg' %}
     {% endif %}
 {% endblock quote %}

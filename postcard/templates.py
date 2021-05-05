@@ -1,6 +1,7 @@
 from fastapi.templating import Jinja2Templates
 
-templates = Jinja2Templates(directory="templates")
+# starlette 菜，任他报错
+templates = Jinja2Templates(directory=["templates", "API/res/icon"])
 templates.env.add_extension("jinja2.ext.i18n")
 templates.env.trim_blocks = True
 templates.env.lstrip_blocks = True
