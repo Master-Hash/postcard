@@ -76,6 +76,11 @@ async def postcard(
                             _=translation.gettext) \
         or getSpecialCity(ip, _=translation.gettext)
 
+    if request.client.host in [
+        "140.82.115.250",
+    ]:
+        pos = "Github"
+
     # 时区优先级：
     # Query > Model > UTC
     try:
