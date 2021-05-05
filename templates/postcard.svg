@@ -1,15 +1,21 @@
 {% extends "base.svg" %}
 {% from "macros.svg" import render_item, render_img, render_quote %}
 
+{% block text %}
+    {% include 'text.svg' %}
+{% endblock text %}
+
+{% block line %}
+    {% if width == 500 %}
+        <g><line id="line" x1="{{ compact_width }}" y1="20" x2="{{ compact_width }}" y2="145"/></g>
+    {% endif %}
+{% endblock line %}
+
 {% block img %}
     {% if img %}
         {{ render_img(data, c.offset_x, c.offset_y, c.scale) }}
     {% endif %}
 {% endblock img %}
-
-{% block text %}
-    {% include 'text.svg' %}
-{% endblock text %}
 
 {% block contact %}
     {% if items %}

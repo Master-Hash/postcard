@@ -16,7 +16,7 @@ svg {
     background-color: var(--background-color);
 }
 
-#image .line {
+#line {
     fill: none;
     stroke: #555;
     stroke-miterlimit: 10;
@@ -50,4 +50,8 @@ svg {
     font-size: 10px;
     fill: var(--content-color);
     font-weight: lighter;
+}
+
+.code {
+    font-family: monospace;
 }

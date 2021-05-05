@@ -1,7 +1,12 @@
-<g id="detail">
-    <text class="text" transform="translate(20 35)">{{ _("Welcome to my friend from %(pos)s", pos=pos) }}</text>
-    <text class="text" transform="translate(20 65)">{{ _("It's %(date)s today", date=date) }}</text>
-    <text class="text" transform="translate(20 95)">{{ _("Your IP address is %(ip)s", ip=request.client.host) }}</text>
-    <text class="text" transform="translate(20 125)">{{ _("You're using %(os)s operating system", os=ua.get_os()) }}</text>
-    <text class="text" transform="translate(20 155)">{{ _("You're using %(bro)s browser",bro=ua.get_browser()) }}</text>
+<g id="detail" transform="translate(25 35)">
+{% for t in (
+    _("Welcome to my friend from %(pos)s", pos=pos),
+    _("It's %(date)s today", date=date),
+    _('Your IP address is <tspan class="code">%(ip)s</tspan>', ip=request.client.host),
+    _("You're using %(os)s operating system", os=ua.get_os()),
+    _("You're using %(bro)s browser",bro=ua.get_browser()),
+   )
+%}
+    <text class="text" transform="translate(0 {{ 25*loop.index0 }})">{{ t }}</text>
+{% endfor %}
 </g>

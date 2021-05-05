@@ -20,7 +20,6 @@ class q:
     # 试试使用 6 元矩阵代替各种缩放？
     # matrix: tuple[float]
     line: Optional[str] = None
-    line2: Optional[str] = None
     lang: Optional[str] = None
     tz: Optional[str] = None
     # 我也没有更优雅的方案（
