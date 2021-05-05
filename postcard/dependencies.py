@@ -26,3 +26,5 @@ class q:
     # 我也没有更优雅的方案（
     for i in icons:
         exec(f"{i}: Optional[str] = None")
+    else:
+        del i
