@@ -16,7 +16,8 @@ def getCityModel(ip: Union[
         with Reader("GeoLite2-City.mmdb") as reader:
             response = reader.city(ip)
     except AddressNotFoundError:
-        return None
+        response = None
+    return response
 
 
 def getCity(
