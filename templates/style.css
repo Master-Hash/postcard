@@ -7,8 +7,8 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-      --background-color: #222;
-      --content-color: #dfdfdf;
+        --background-color: #222;
+        --content-color: #dfdfdf;
     }
 }
 
@@ -22,17 +22,21 @@ svg {
     stroke-miterlimit: 10;
     stroke-width: 0.5px;
     stroke-linecap: round;
+    animation: fadeIn 0.8s ease-in-out both;
 }
 
-#image .bg {
-    /* width: 200px; */
-    height: 250px;
+.text {
+    font-weight: lighter;
+    fill: var(--content-color);
 }
 
 #detail .text {
     font-size: 12px;
-    font-weight: lighter;
-    fill: var(--content-color);
+    animation: fadeIn 0.8s ease-in-out both;
+}
+
+#contact g.item {
+    animation: fadeIn 0.8s ease-in-out both;
 }
 
 #contact g.item svg {
@@ -42,16 +46,23 @@ svg {
 
 #contact g.item .text {
     font-size: 12px;
-    fill: var(--content-color);
-    font-weight: lighter;
 }
 
 #quote .text {
     font-size: 10px;
-    fill: var(--content-color);
-    font-weight: lighter;
+    animation: fadeIn 0.8s ease-in-out both;
 }
 
 .code {
     font-family: monospace;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

@@ -14,9 +14,9 @@
 
 <g id="contact" transform="matrix{{ commons.matrix_contact }}">
 {% for key, value in items.items() %}
-    <g class="item" transform="translate(0, {{ loop.index0*30 }})">
+    <g class="item" transform="translate(0 {{ loop.index0*30 }})" style="animation-delay: {{100*(loop.index+5)}}ms">
         <g class="icon" transform="scale(1.2)">{% include '%s.svg'%key %}</g>
-        <text class="text" transform="translate(25, 14)">
+        <text class="text" transform="translate(25 14)">
             {{ url(key, value) }}
         </text>
     </g>

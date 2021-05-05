@@ -7,6 +7,6 @@
     _("You're using %(bro)s browser",bro=ua.get_browser()),
    )
 %}
-    <text class="text" transform="translate(0 {{ 25*loop.index0 }})">{{ t }}</text>
+    <text class="text" transform="translate(0 {{ 25*loop.index0 }})" style="animation-delay: {{100*loop.index}}ms">{{ t }}</text>
 {% endfor %}
 </g>
