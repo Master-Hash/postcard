@@ -1,15 +1,19 @@
 import os
 from dataclasses import dataclass
 from enum import Enum
-from textwrap import TextWrapper
-from typing import Optional
+from functools import reduce
+from operator import add
+from textwrap import wrap
+from typing import Any, Optional
 
 from babel import localedata
 from pytz import common_timezones
 
 icons = [os.path.splitext(i)[0] for i in os.listdir("./API/res/icon")]
-wrapper = TextWrapper(width=13)
 
+
+def concat(ll: list[list[Any]]) -> list[Any]:
+    return reduce(add, ll)
 
 # 至于为什么要换名字…… in 作为关键字，不能是属性名
 # 所以决定不重定向了，直接新开？
@@ -19,7 +23,8 @@ wrapper = TextWrapper(width=13)
 
 
 TimeZone = Enum("Timezone", {i: i for i in common_timezones}, type=str)
-Language = Enum("Language", {i: i for i in localedata.locale_identifiers()}, type=str)
+Language = Enum("Language",
+                {i: i for i in localedata.locale_identifiers()}, type=str)
 
 
 @dataclass
@@ -34,10 +39,10 @@ class q:
     matrix_line: Optional[str] = '(1 0 0 1 0 0)'
     matrix_contact: Optional[str] = '(1 0 0 1 300 15)'
     matrix_quote: Optional[str] = '(1 0 0 1 300 100)'
-    quote: Optional[str] = ""
+    quote: str = ""
     lang: Optional[Language] = None
     tz: Optional[TimeZone] = None
-    width: Optional[int] = 13
+    width: int = 13
     # 我也没有更优雅的方案（
     for i in icons:
         exec(f"{i}: Optional[str] = None")
@@ -49,4 +54,11 @@ class q:
         return {i: query_params[i] for i in query_params if i in icons}
 
     def getQuote(self) -> list[str]:
-        return wrapper.wrap(self.quote)
+        ll = self.quote.split("\\n")
+        return concat([
+            wrap(
+                i,
+                width=self.width,
+                replace_whitespace=False
+            ) for i in ll
+        ])
