@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 
-from .routers import redirections, postcard
+from .routers import postcard, redirections
 
 tags_metadata = [
     {

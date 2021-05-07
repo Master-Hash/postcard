@@ -1,22 +1,22 @@
+from datetime import datetime
 from ipaddress import ip_address
 from typing import Optional
-from datetime import datetime
-from babel.core import UnknownLocaleError
 
+import pytz
+from babel import Locale
+from babel.core import UnknownLocaleError
+from babel.dates import format_date
+from babel.support import Translations
 from fastapi import APIRouter, Depends, Header
 from fastapi.requests import Request
 from user_agents import parse
-from babel.dates import format_date
-from babel import Locale
-from babel.support import Translations
 from werkzeug.datastructures import LanguageAccept
 from werkzeug.http import parse_accept_header
-import pytz
 
-from ..responses import SVGResponse
 from ..dependencies import q
-from ..templates import templates
 from ..geoparse import getCity, getCityModel, getSpecialCity
+from ..responses import SVGResponse
+from ..templates import templates
 
 router = APIRouter(
     tags=["postcards"],
