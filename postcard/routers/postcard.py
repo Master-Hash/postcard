@@ -1,6 +1,7 @@
 from datetime import datetime
+from functools import lru_cache
 from ipaddress import ip_address
-from typing import Optional
+from typing import Optional, Union
 
 import pytz
 from babel import Locale
@@ -22,6 +23,11 @@ router = APIRouter(
     tags=["postcards"],
     default_response_class=SVGResponse,
 )
+
+
+@lru_cache(typed=True)
+def getTranslation(locale: Union[str, Locale]):
+    return Translations.load("locale", locale)
 
 
 # 这里有一个奇怪的问题
@@ -54,13 +60,17 @@ async def postcard(
 
     langs = parse_accept_header(accept_language, LanguageAccept)
     # 优先级：Query > Header > Default
-    lang = commons.lang or langs.best or "en"
+    locale = commons.locale and Locale.parse(lang) \
+        or langs and Locale.parse(langs.best, sep="-") \
+        or Locale.parse("en_US")
+
     ip = ip_address(request.client.host)
-    try:
-        _l = Locale.parse(lang, sep="-")
-    except UnknownLocaleError:
-        _l = Locale.parse("en")
-    translation = Translations.load('locale', _l)
+
+    # try:
+    #     _l = Locale.parse(lang)
+    # except UnknownLocaleError:
+    #     _l = Locale.parse("en")
+    translation = getTranslation(locale)
 
     # 1.
     # 2. 特判 ip -> 返回 _()
@@ -70,16 +80,16 @@ async def postcard(
     # 6. 时区 <- commons.tz or str or pytz.utc
 
     # is_global 并非保险箱……譬如 224.122.80.134 就查不到（
-    model = getCityModel(ip)
-
-    pos = model and getCity(model, lang=lang, langs=langs,
-                            _=translation.gettext) \
-        or getSpecialCity(ip, _=translation.gettext)
 
     if request.client.host in [
         "140.82.115.250",
     ]:
         pos = "Github"
+    else:
+        model = getCityModel(ip)
+        pos = model and getCity(model, lang=locale, langs=langs,
+                                _=translation.gettext) \
+            or getSpecialCity(ip, _=translation.gettext)
 
     # 时区优先级：
     # Query > Model > UTC
@@ -96,7 +106,7 @@ async def postcard(
     date = format_date(
         datetime.now(tz=tz),
         format="full",
-        locale=_l,
+        locale=locale,
     )
 
     # 其实不知道这么搞对不对……

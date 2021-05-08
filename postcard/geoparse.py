@@ -1,12 +1,15 @@
+from functools import lru_cache
 from ipaddress import IPv4Address, IPv6Address
 from typing import Callable, Optional, Union
 
+from babel import Locale
 from geoip2.database import Reader
 from geoip2.errors import AddressNotFoundError
 from geoip2.models import City
 from werkzeug.datastructures import LanguageAccept
 
 
+@lru_cache(typed=True)
 def getCityModel(ip: Union[
     str,
     IPv4Address,
@@ -20,10 +23,11 @@ def getCityModel(ip: Union[
     return response
 
 
+@lru_cache(typed=True)
 def getCity(
     model: City,
     *,
-    lang: str,
+    lang: Locale,
     langs: LanguageAccept,
     _: Callable[[str], str]
 ) -> str:
@@ -41,8 +45,9 @@ def getCity(
     ):
         if xs:
             # geoip2.records.City 不是字典，没有 get() 方法（
-            return (lang in xs and xs[lang]) \
-                or langs.best_match(xs) \
+            return lang.list_patterns.base["locale_id"].lower() \
+                .replace("_", "-") in xs and xs[lang] \
+                or langs.best_match(xs) and xs[lang] \
                 or x
     else:
         # logging.warning("理论上这里不会出现")
@@ -58,6 +63,7 @@ def getCity(
         return _("nowhere")
 
 
+@lru_cache(typed=True)
 def getSpecialCity(
     ip: Union[IPv4Address, IPv6Address],
     *,

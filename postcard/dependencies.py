@@ -6,7 +6,7 @@ from operator import add
 from textwrap import wrap
 from typing import Any, Optional
 
-from babel import localedata
+from babel import localedata, Locale
 from pytz import common_timezones
 
 icons = [os.path.splitext(i)[0] for i in os.listdir("./API/res/icon")]
@@ -40,7 +40,7 @@ class q:
     matrix_contact: Optional[str] = '(1 0 0 1 300 15)'
     matrix_quote: Optional[str] = '(1 0 0 1 300 100)'
     quote: str = ""
-    lang: Optional[Language] = None
+    locale: Optional[Language] = None
     tz: Optional[TimeZone] = None
     width: int = 13
     # 我也没有更优雅的方案（
@@ -53,12 +53,15 @@ class q:
     def getSocial(query_params) -> list[str]:
         return {i: query_params[i] for i in query_params if i in icons}
 
+    def __post_init__(self):
+        self.quoteLines = self.getQuote()
+        # self.locale = self.lang and Locale(self.lang)
+
     def getQuote(self) -> list[str]:
         ll = self.quote.split("\\n")
         return concat([
             wrap(
                 i,
                 width=self.width,
-                replace_whitespace=False
             ) for i in ll
         ])
