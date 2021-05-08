@@ -32,7 +32,7 @@ class q:
     # 不想搞图片了（
     # 我又不擅长找图，画图，赏图（
     # img: Optional[Img] = None
-    src: Optional[str] = None
+    # src: Optional[str] = None
     # 试试使用 6 元矩阵代替各种缩放？
     # matrix: tuple[float]
     matrix_detail: Optional[str] = '(1 0 0 1 25 35)'
@@ -40,7 +40,7 @@ class q:
     matrix_contact: Optional[str] = '(1 0 0 1 300 15)'
     matrix_quote: Optional[str] = '(1 0 0 1 300 100)'
     quote: str = ""
-    locale: Optional[Language] = None
+    lang: Optional[Language] = None
     tz: Optional[TimeZone] = None
     width: int = 13
     # 我也没有更优雅的方案（
@@ -55,7 +55,7 @@ class q:
 
     def __post_init__(self):
         self.quoteLines = self.getQuote()
-        # self.locale = self.lang and Locale(self.lang)
+        self.locale = self.lang and Locale(self.lang)
 
     def getQuote(self) -> list[str]:
         ll = self.quote.split("\\n")

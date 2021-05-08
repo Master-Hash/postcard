@@ -5,7 +5,6 @@ from typing import Optional, Union
 
 import pytz
 from babel import Locale
-from babel.core import UnknownLocaleError
 from babel.dates import format_date
 from babel.support import Translations
 from fastapi import APIRouter, Depends, Header
@@ -60,7 +59,7 @@ async def postcard(
 
     langs = parse_accept_header(accept_language, LanguageAccept)
     # 优先级：Query > Header > Default
-    locale = commons.locale and Locale.parse(lang) \
+    locale = commons.locale \
         or langs and Locale.parse(langs.best, sep="-") \
         or Locale.parse("en_US")
 
@@ -124,8 +123,6 @@ async def postcard(
             "ua": ua,
             "date": date,
             "items": items,
-            # tz 就不传进去了？
-            # "gettext": translation.gettext,
         },
         media_type="image/svg+xml"
     )

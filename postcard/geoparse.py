@@ -10,6 +10,24 @@ from werkzeug.datastructures import LanguageAccept
 
 
 @lru_cache(typed=True)
+def negotiate(
+    preferred: Locale,
+    provided: dict[str, str],
+) -> Optional[str]:
+    b2 = b1 = None
+    for i in provided:
+        pl = Locale.parse(i, sep="-")
+        if pl.language == preferred.language:
+            b1 = i
+            if pl.territory == preferred.territory:
+                b2 = i
+    else:
+        return b2 or b1 or None
+
+
+
+
+@lru_cache(typed=True)
 def getCityModel(ip: Union[
     str,
     IPv4Address,
@@ -45,8 +63,7 @@ def getCity(
     ):
         if xs:
             # geoip2.records.City 不是字典，没有 get() 方法（
-            return lang.list_patterns.base["locale_id"].lower() \
-                .replace("_", "-") in xs and xs[lang] \
+            return (tmp := negotiate(lang, xs)) and xs[tmp] \
                 or langs.best_match(xs) and xs[lang] \
                 or x
     else:
