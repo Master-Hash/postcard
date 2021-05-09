@@ -72,7 +72,7 @@ async def validation_exception_handler(
         quote=msg,
         github="Master-Hash/postcard",
         width=30 if lang.language == "zh" else 35,
-        matrix_quote="(1 0 0 1 300 115)",
+        matrix_quote="(1 0 0 1 300 95)",
     )
     return RedirectResponse(
         f"{u.path}?{u.query}",
