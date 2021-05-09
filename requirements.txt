@@ -6,3 +6,5 @@ geoip2>=4.1.0
 Jinja2>=2.11.3
 uvicorn>=0.13.4
 user_agents>=2.2.0
+Werkzeug>=1.0.1
+pytz>=2020.1

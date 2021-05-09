@@ -62,7 +62,7 @@ class q:
         self.locale = self.lang and Locale(self.lang)
 
     def getQuote(self) -> list[str]:
-        ll = self.quote.split("\\n")
+        ll = self.quote.split("\n")
         return concat([
             wrap(
                 i,
