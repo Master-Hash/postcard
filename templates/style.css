@@ -72,3 +72,7 @@ svg {
         stroke-dashoffset: 0;
     }
 }
+
+.st0 {
+    fill: var(--base07) !important
+}
