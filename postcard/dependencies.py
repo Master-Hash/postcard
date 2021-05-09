@@ -1,4 +1,4 @@
-import os
+import os, re
 from dataclasses import dataclass
 from enum import Enum
 from functools import reduce
@@ -9,8 +9,9 @@ from typing import Any, Optional
 from babel import localedata, Locale
 from pytz import common_timezones
 
+b = re.compile(r"(?<=base16-).+?(?=\.css)")
 icons = [os.path.splitext(i)[0] for i in os.listdir("./API/res/icon")]
-
+themes = [b.search(i).group() for i in os.listdir("./templates/themes")]
 
 def concat(ll: list[list[Any]]) -> list[Any]:
     return reduce(add, ll)
@@ -26,6 +27,7 @@ TimeZone = Enum("Timezone", {i: i for i in common_timezones}, type=str)
 Language = Enum("Language",
                 {i: i for i in localedata.locale_identifiers()}, type=str)
 
+Theme = Enum("Theme", {i: i for i in themes}, type=str)
 
 @dataclass
 class q:
@@ -43,6 +45,8 @@ class q:
     lang: Optional[Language] = None
     tz: Optional[TimeZone] = None
     width: int = 30
+    light: Theme = Theme["tomorrow"]
+    dark: Theme = Theme["tomorrow-night"]
     # 我也没有更优雅的方案（
     for i in icons:
         exec(f"{i}: Optional[str] = None")

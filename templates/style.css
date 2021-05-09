@@ -1,24 +1,18 @@
 /* https://zhih.me/website-darkmode-on-macos/ */
 
-:root {
-    --background-color: #FFF;
-    --content-color: #15171A;
-}
+{% include 'themes/base16-%s.css' % commons.light.value %}
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #222;
-        --content-color: #dfdfdf;
-    }
+    {% include 'themes/base16-%s.css' % commons.dark.value %}
 }
 
 svg {
-    background-color: var(--background-color);
+    background-color: var(--base00);
 }
 
 #line line {
     fill: none;
-    stroke: #555;
+    stroke: var(--base02);
     stroke-miterlimit: 10;
     stroke-width: 0.5;
     stroke-linecap: round;
@@ -29,7 +23,7 @@ svg {
 
 .text {
     font-weight: lighter;
-    fill: var(--content-color);
+    fill: var(--base05);
 }
 
 #detail .text {
