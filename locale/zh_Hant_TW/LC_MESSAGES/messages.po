@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-05 23:14+0800\n"
+"POT-Creation-Date: 2021-05-09 14:10+0800\n"
 "PO-Revision-Date: 2021-05-03 22:04+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hant_TW\n"
@@ -18,15 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: postcard/geoparse.py:57 postcard/geoparse.py:77
+#: postcard/__init__.py:67
+msgid "Query parameter"
+msgstr "請求參數"
+
+#: postcard/__init__.py:68
+#, python-format
+msgid "%s %s is invaild"
+msgstr "%s %s 無效"
+
+#: postcard/__init__.py:69
+msgid "Please refer to Github, /docs or /redoc"
+msgstr "請參考 Github，/docs 和 /redoc"
+
+#: postcard/geoparse.py:80 postcard/geoparse.py:101
 msgid "nowhere"
 msgstr "神秘位置"
 
-#: postcard/geoparse.py:73
+#: postcard/geoparse.py:97
 msgid "localhost"
 msgstr "本地"
 
-#: postcard/geoparse.py:75
+#: postcard/geoparse.py:99
 msgid "some reservation"
 msgstr "保護區"
 

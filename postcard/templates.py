@@ -1,7 +1,7 @@
-# from babel import Locale
-# from babel.support import Translations
-# from functools import lru_cache
-# from typing import Callable
+from babel import Locale
+from babel.support import Translations
+from functools import lru_cache
+from typing import Union
 
 from fastapi.templating import Jinja2Templates
 
@@ -13,6 +13,10 @@ templates.env.lstrip_blocks = True
 templates.env.newstyle_gettext = True
 templates.env.enable_async = True
 
+
+@lru_cache(typed=True)
+def getTranslation(locale: Union[str, Locale]):
+    return Translations.load("locale", locale)
 
 # @lru_cache
 # def getTranslations(locale: Locale) -> Translations:

@@ -42,7 +42,7 @@ class q:
     quote: str = ""
     lang: Optional[Language] = None
     tz: Optional[TimeZone] = None
-    width: int = 13
+    width: int = 30
     # 我也没有更优雅的方案（
     for i in icons:
         exec(f"{i}: Optional[str] = None")

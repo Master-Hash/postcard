@@ -8,6 +8,7 @@ from babel import Locale
 from babel.dates import format_date
 from babel.support import Translations
 from fastapi import APIRouter, Depends, Header
+from fastapi.exceptions import RequestValidationError
 from fastapi.requests import Request
 from user_agents import parse
 from werkzeug.datastructures import LanguageAccept
@@ -16,18 +17,12 @@ from werkzeug.http import parse_accept_header
 from ..dependencies import q
 from ..geoparse import getCity, getCityModel, getSpecialCity
 from ..responses import SVGResponse
-from ..templates import templates
+from ..templates import templates, getTranslation
 
 router = APIRouter(
     tags=["postcards"],
     default_response_class=SVGResponse,
 )
-
-
-@lru_cache(typed=True)
-def getTranslation(locale: Union[str, Locale]):
-    return Translations.load("locale", locale)
-
 
 # 这里有一个奇怪的问题
 # 理论上可以直接查到 locale
