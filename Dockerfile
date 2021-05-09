@@ -10,13 +10,13 @@ RUN pip install -U pip \
 
 FROM python:alpine
 
-RUN apk add --no-cache --virtual .build-deps git \
- & cd /opt \
- & git clone https://github.com/Master-Hash/postcard.git \
- & cd postcard \
+COPY . /opt/postcard
+
+WORKDIR /opt/portcard
+
+RUN pip install -U pip \
  & pip install -U -r ./requirements.txt \
  & python ./translate.py compile \
- & apk del .build-deps \
  & curl -O https://raw.fastgit.org/P3TERX/GeoLite.mmdb/download/GeoLite2-City.mmdb
 
 COPY --from=0 ["/opt/base16-builder-python/output/styles/css-variables/", "/opt/postcard/templates/themes/"]
