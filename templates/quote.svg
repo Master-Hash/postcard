@@ -1,0 +1,5 @@
+<g id="quote" transform="matrix{{ commons.matrix_quote }}">
+    {% for line in commons.quoteLines %}
+        <text class="text" transform="translate(0 {{ loop.index0*20 }})" style="animation-delay: {{ 100*(loop.index+5+(items|count)) }}ms">{{line}}</text>
+    {% endfor %}
+</g>

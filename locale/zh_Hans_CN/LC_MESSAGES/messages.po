@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-04 09:35+0800\n"
+"POT-Creation-Date: 2021-05-09 14:10+0800\n"
 "PO-Revision-Date: 2021-05-03 22:04+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -18,35 +18,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: postcard/functions.py:40
-msgid "localhost"
-msgstr "本地"
+#: postcard/__init__.py:67
+msgid "Query parameter"
+msgstr "请求参数"
 
-#: postcard/functions.py:60
+#: postcard/__init__.py:68
+#, python-format
+msgid "%s %s is invaild"
+msgstr "%s %s 无效"
+
+#: postcard/__init__.py:69
+msgid "Please refer to Github, /docs or /redoc"
+msgstr "请参考 Github，/docs 和 /redoc"
+
+#: postcard/geoparse.py:80 postcard/geoparse.py:101
 msgid "nowhere"
 msgstr "神秘位置"
 
-#: templates/text.svg:2
-#, python-format
-msgid "Welcome to my friend from %(geo)s"
-msgstr "欢迎您来自%(geo)s的朋友"
+#: postcard/geoparse.py:97
+msgid "localhost"
+msgstr "本地"
 
-#: templates/text.svg:3
+#: postcard/geoparse.py:99
+msgid "some reservation"
+msgstr "保护区"
+
+#: templates/text.svg:2
+msgid "Welcome to my spider from Github"
+msgstr "欢迎您来自 Github 的爬虫"
+
+#: templates/text.svg:4
+#, python-format
+msgid "Welcome to my friend from %(pos)s"
+msgstr "欢迎您来自%(pos)s的朋友"
+
+#: templates/text.svg:9
 #, python-format
 msgid "It's %(date)s today"
 msgstr "今天是%(date)s"
 
-#: templates/text.svg:4
+#: templates/text.svg:10
 #, python-format
-msgid "Your IP address is %(ip)s"
-msgstr "您的 IP 是 %(ip)s"
+msgid "Your IP address is <tspan class=\"code\">%(ip)s</tspan>"
+msgstr "您的 IP 是 <tspan class=\"code\">%(ip)s</tspan>"
 
-#: templates/text.svg:5
+#: templates/text.svg:11
 #, python-format
 msgid "You're using %(os)s operating system"
 msgstr "您使用的是 %(os)s 操作系统"
 
-#: templates/text.svg:6
+#: templates/text.svg:12
 #, python-format
 msgid "You're using %(bro)s browser"
 msgstr "您使用的是 %(bro)s 浏览器"

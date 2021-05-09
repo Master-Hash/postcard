@@ -1,0 +1,17 @@
+{% if pos == "Github" %}
+    {% set tmp = _("Welcome to my spider from Github") %}
+{% else %}
+    {% set tmp = _("Welcome to my friend from %(pos)s", pos=pos) %}
+{% endif %}
+<g id="detail" transform="matrix{{ commons.matrix_detail }}">
+{% for t in (
+    tmp,
+    _("It's %(date)s today", date=date),
+    _('Your IP address is <tspan class="code">%(ip)s</tspan>', ip=request.client.host),
+    _("You're using %(os)s operating system", os=ua.get_os()),
+    _("You're using %(bro)s browser",bro=ua.get_browser()),
+   )
+%}
+    <text class="text" transform="translate(0 {{ 25*loop.index0 }})" style="animation-delay: {{100*loop.index}}ms">{{ t }}</text>
+{% endfor %}
+</g>
