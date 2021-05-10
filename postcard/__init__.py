@@ -67,7 +67,7 @@ async def validation_exception_handler(
             p = _("Query parameter")
         x.append(_('%s %s is invaild') % (p, param))
     x.append(_('Please refer to Github, /docs or /redoc'))
-    msg = "\\n".join(x)
+    msg = "\n".join(x)
     u = request.url.replace_query_params(
         quote=msg,
         github="Master-Hash/postcard",
